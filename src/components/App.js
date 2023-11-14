@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./../styles/App.css";
+import React, { useState } from 'react';
+import './../styles/App.css';
 
 const App = () => {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
   const handleAdd = (e) => {
     e.preventDefault();
     setTodos([...todos, todo]);
-    setTodo("");
+    setTodo('');
   };
 
   const handleDelete = (index) => {
@@ -26,21 +26,21 @@ const App = () => {
           name="todo"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
-        ></input>
+        />
         <button onClick={handleAdd}>Add Todo</button>
       </form>
+
       <ul>
-        {todos.map((todo,index) =>{
-         return (
-          <li key={index}>
-            <div className="todo-item">
-              <p>{todo}</p>
-              <button onClick={handleDelete(index)}></button>
-            </div>
-          </li>
-         )
-        }
-         )}
+        {todos.map((todo, index) => {
+          return (
+            <li key={index}>
+              <div className="todo-item">
+                <p>{todo}</p>
+                <button onClick={() => handleDelete(index)}></button>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
